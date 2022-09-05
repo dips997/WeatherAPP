@@ -1,0 +1,87 @@
+/* .front{
+    margin-top: 30px;
+} */
+.card{
+    margin:21px auto auto;
+    padding: 1%;
+}
+.row{
+    width:96%;
+    margin:auto;
+    margin-top: 16px;
+}
+.sec-first{
+    margin-top: 25px;
+}
+.sec-third .f-col{
+    background-color: rgb(37,3,74);
+}
+.four-row .card{
+    border-radius:20px;
+    background-color: rgb(37,3,74);
+}
+.sec-first .input-header{
+    margin-top: 40px;
+    position: relative;
+}
+.input-header input{
+    margin: auto;
+    display:block;
+    width:95%;
+    padding:5%;
+    border-radius:15px;
+    padding-left:40px;
+    font-size: 1.5rem;
+    border:none;
+    background: rgb(37,3,74)!important;
+}
+.input-header span{
+    position: absolute;
+    top:30%;
+    right:10%;
+    color:white;
+    font-size: 1.5rem;
+    align-items: center;
+}
+/* .sec-first */
+.sec-second .card{
+    background-color: rgb(37,3,74);
+    border-radius: 20px;
+    /* margin:auto; */
+    display:block;
+    width:95%;
+    margin-top: 42px;
+}
+.sec-second .temp{
+    font-size:4rem;
+}
+.sec-second h1{
+    color:white;
+}
+.sec-second h1 sup{
+    color:yellow;
+}
+.sec-second h5{
+    color:white;
+    font-size:1.25rem;
+}
+.sec-third{
+   
+    color:white;
+}
+.sec-third .f-col{
+    border-radius: 20px;
+    padding:2rem;
+}
+.sec-four{
+    color:white;
+}
+.sec-four .fc{
+    border-radius:20px;
+    padding:2rem;
+}
+
+.third-row .card{
+    background-color: rgb(37,3,74);
+    border-radius: 20px;
+}
