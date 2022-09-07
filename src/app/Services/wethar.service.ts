@@ -12,15 +12,32 @@ export class WetharService {
   constructor(private http:HttpClient) { }
 
   getweatherData(cityName:string): Observable<WeatherData>{
-    return this.http.get<WeatherData>('https://open-weather13.p.rapidapi.com/city/cityName',{
-      // params : new HttpParams()
-      // .set('',cityName),
+    let a = cityName;
+    console.log(a);
+    return this.http.get<WeatherData>('https://weatherapi-com.p.rapidapi.com/forecast.json',{
+      params : new HttpParams()
+      .set('q',cityName)
+      .set('days',5),
       headers:new HttpHeaders()
-      .set(environment.ApiKeyHeaderName,environment.ApiKeyHeaderValue)
-      .set(environment.ApiHeaderName,environment.ApiHeaderValue)
-      // params : new HttpParams()
-      // .set('access_key',environment.ApiKeyHeaderValue)
-      // .set('query',cityName)
+      .set('X-RapidAPI-Key','23f463a106msh4387186b9cf342ep14429djsn453d3d79a887')
+      .set('X-RapidAPI-Host','weatherapi-com.p.rapidapi.com')
     })
+   
   }
+
+  getWeatherDataWithLocation(lat:any,lng:any): Observable<WeatherData>{
+  
+    return this.http.get<WeatherData>('https://weatherapi-com.p.rapidapi.com/forecast.json',{
+      params : new HttpParams()
+   
+      .set('q',`${lat},${lng}`)
+      .set('days',5),
+      headers:new HttpHeaders()
+      .set('X-RapidAPI-Key','23f463a106msh4387186b9cf342ep14429djsn453d3d79a887')
+      .set('X-RapidAPI-Host','weatherapi-com.p.rapidapi.com')
+    })
+   
+  }
+
+
 }

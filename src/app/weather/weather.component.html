@@ -5,8 +5,8 @@
             <h1 style="text-align:center;color:white;font-size:2.25rem;"><span class="glyphicon glyphicon-th" style="right:19%;"></span> Weather Forecast</h1>
         </div>
         <div class="input-header">
-            <form>
-                <input type="text" placeholder="Search Your City">
+            <form  #form="ngForm" (submit)="onSubmit()" >
+                <input type="text" placeholder="Search Your City" name="city" [(ngModel)]="cityName">
                 <span>
                     <i class="bi bi-search"></i>
                 </span>
@@ -18,28 +18,32 @@
             <div class="card-body">
                 <div style="display:flex;">
                     <h5 class="card-title" style="width:60%;font-weight:bolder;font-size:2rem;">Today</h5>
-                    <h5 class="card-text" style="Width:40%;font-size:1.8rem;">Monday, 03Feb</h5>
+                    <h5 class="card-text" style="Width:40%;font-size:1.8rem;">{{today| date:'EE, MMM d'}}</h5>
                 </div>
                 <div style="display:flex;padding:18px;">
                     <div style="width:70%;">
                         <h1 class="card-subtitle temp" style="text-align:center;font-weight: 700;">
-                            33<sup>°c</sup>
+                        {{weatherData.current.temp_c}}<sup>°c</sup>
                         </h1>
                     </div>
                     <div style="width:30%;">
-                        <img src="https://weather-31078.web.app/assets/images/mist.png" style="width:60%;height:100%;" alt="pi">
+                        <img src="..\..\assets\Copy of rain.png" *ngIf="weatherData.current.condition.text == Rain" style="width:90%;height:100%;" alt="pi">
+                        <img src="..\..\assets\Copy of clear-sky.png" *ngIf="weatherData.current.temp_c >= 35"  style="width:90%;height:100%;" alt="pi">
+                        <img src="..\..\assets\Copy of few-clouds.png" *ngIf=" weatherData.current.temp_c >=25 && weatherData.current.temp_c < 35" style="width:90%;height:100%;" alt="pi">
+                         <img src="..\..\assets\Copy of scattered-clouds.png" *ngIf="weatherData.current.temp_c >=1 && weatherData.current.temp_c < 14"  style="width:90%;height:100%;" alt="pic">
+                         <img src="..\..\assets\Copy of broken-clouds.png" *ngIf="weatherData.current.temp_c >=14 && weatherData.current.temp_c < 25" style="width:90%;height:100%;" alt="">
+                        <img src="..\..\assets\Copy of snow.png"  *ngIf="weatherData.current.temp_c < 1 "  style="width:90%;height:100%;" alt="pi">
                     </div>
                 </div>
-               
                 <div class="location">
-                    <h5 style="text-align:center;font-size:2rem;padding-top: 12px;"> <i  class="bi bi-geo-alt-fill"></i> &nbsp; Palanpur </h5>
+                    <h5 style="text-align:center;font-size:2rem;padding-top: 12px;"> <i  class="bi bi-geo-alt-fill"></i> &nbsp; {{weatherData.location.name}}, {{weatherData.location.country}} </h5>
                 </div>
             </div>
         </div>
     </section>
     <section class="sec-third">
         <div class="row third-row">
-            <div class="col-6">
+            <div class="col-6"> 
                 <div class="card Humidity">
                     <div class="card-body">
                         <div style="display:flex;">
@@ -48,7 +52,7 @@
                             </div>
                             <div>
                                 <h5 class="card-title" style="font-size:2.1rem;font-weight: 700;">
-                                    70%
+                                  {{weatherData.current.humidity}} %
                                 </h5>
                                 <p class="card-text" style="font-size:1.6rem;font-weight: 700;">
                                     Humidity
@@ -67,7 +71,7 @@
                             </div>
                             <div>
                                 <h5 class="card-title"  style="font-size:2.1rem;font-weight: 700;">
-                                    1010HPa
+                                    {{weatherData.current.pressure_mb}}HPa
                                 </h5>
                                 <p class="card-text"  style="font-size:1.6rem;font-weight: 700;">
                                     Pressure
@@ -85,10 +89,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"  style="font-size:2.1rem;font-weight: 700;">
-                            34°c
+                            {{weatherData.forecast.forecastday[0].day.avgtemp_c}}°c
                         </h5>
                         <p class="card-text"  style="font-size:1.6rem;font-weight: 700;">
-                            Sun
+                           {{days[today.getDay()+1]}}
                         </p>
                     </div>
                 </div>
@@ -97,10 +101,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="font-size:2.1rem;font-weight: 700;">
-                            34°c
+                            {{weatherData.forecast.forecastday[1].day.avgtemp_c}}°c
                         </h5>
                         <p class="card-text"  style="font-size:1.6rem;font-weight: 700;">
-                            Mon
+                              {{days[today.getDay()+2]}} 
                         </p>
                     </div>
                 </div>
@@ -109,10 +113,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"  style="font-size:2.1rem;font-weight: 700;">
-                            34°c
+                            {{weatherData.forecast.forecastday[2].day.avgtemp_c}}°c
                         </h5>
                         <p class="card-text"  style="font-size:1.6rem;font-weight: 700;">
-                            Tue
+                            {{ days[today.getDay()+3] }}
                         </p>
                     </div>
                 </div>
@@ -120,3 +124,4 @@
         </div>
     </section>
 </div>
+
